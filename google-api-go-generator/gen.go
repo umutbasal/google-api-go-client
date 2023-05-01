@@ -907,6 +907,10 @@ func (p *Property) GoName() string {
 	goname := initialCap(p.p.Name)
 	if p.Type().ReadOnly {
 		goname = strings.ToLower(goname[:1]) + goname[1:]
+		goname = validGoIdentifer(goname)
+		if goname == "type" {
+			panic("type is a reserved word")
+		}
 	}
 	return goname
 }
