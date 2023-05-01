@@ -904,7 +904,11 @@ func (p *Property) Type() *disco.Schema {
 }
 
 func (p *Property) GoName() string {
-	return initialCap(p.p.Name)
+	goname := initialCap(p.p.Name)
+	if p.Type().ReadOnly {
+		goname = strings.ToLower(goname[:1]) + goname[1:]
+	}
+	return goname
 }
 
 func (p *Property) Default() string {
@@ -1466,10 +1470,19 @@ func (s *Schema) writeSchemaStruct(api *API) {
 // by forceSendFieldName, and allows fields to be transmitted with the null value
 // by listing them in the field identified by nullFieldsName.
 func (s *Schema) writeSchemaMarshal(forceSendFieldName, nullFieldsName string) {
+	// func (s *Query) MarshalJSON() ([]byte, error) {
+	// 	// make all fields exported
+	// 	raw, err := googleapi.MakeAllUnexportedFieldsExported(s)
+	// 	if err != nil {
+	// 		return nil, err
+	// 	}
+	// 	return gensupport.MarshalJSON(raw, s.ForceSendFields, s.NullFields)
+	// }
 	s.api.pn("func (s *%s) MarshalJSON() ([]byte, error) {", s.GoName())
-	s.api.pn("\ttype NoMethod %s", s.GoName())
-	// pass schema as methodless type to prevent subsequent calls to MarshalJSON from recursing indefinitely.
-	s.api.pn("\traw := NoMethod(*s)")
+	s.api.pn("\traw, err := googleapi.MakeAllUnexportedFieldsExported(s)")
+	s.api.pn("\tif err != nil {")
+	s.api.pn("\t\treturn nil, err")
+	s.api.pn("\t}")
 	s.api.pn("\treturn gensupport.MarshalJSON(raw, s.%s, s.%s)", forceSendFieldName, nullFieldsName)
 	s.api.pn("}")
 }

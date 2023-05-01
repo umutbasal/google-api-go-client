@@ -135,6 +135,7 @@ type Schema struct {
 	AdditionalProperties *Schema // boolean not supported
 	Ref                  string  `json:"$ref"`
 	Default              string
+	ReadOnly             bool `json:"readonly"`
 	Pattern              string
 	Enums                []string `json:"enum"`
 	// Google extensions to JSON Schema

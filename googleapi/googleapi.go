@@ -14,8 +14,10 @@ import (
 	"io/ioutil"
 	"net/http"
 	"net/url"
+	"reflect"
 	"strings"
 	"time"
+	"unsafe"
 
 	"google.golang.org/api/internal/third_party/uritemplates"
 )
@@ -479,3 +481,30 @@ func (q queryParameter) GetMulti() (string, []string) {
 }
 
 // TODO: Fields too
+
+func MakeAllUnexportedFieldsExported(s interface{}) (interface{}, error) {
+	v := reflect.ValueOf(s).Elem()
+	t := v.Type()
+	newFields := make([]reflect.StructField, t.NumField())
+	for i := 0; i < t.NumField(); i++ {
+		f := t.Field(i)
+		if f.IsExported() {
+			newFields[i] = f
+		} else {
+			fname := strings.ToUpper(f.Name[:1]) + f.Name[1:]
+			newFields[i] = reflect.StructField{
+				Name: fname,
+				Type: f.Type,
+				Tag:  f.Tag,
+			}
+		}
+	}
+	newStructType := reflect.StructOf(newFields)
+	newStructValue := reflect.New(newStructType).Elem()
+	for i := 0; i < t.NumField(); i++ {
+		fval := reflect.NewAt(t.Field(i).Type, unsafe.Pointer(v.Field(i).UnsafeAddr())).Elem()
+		fname := strings.ToUpper(t.Field(i).Name[:1]) + t.Field(i).Name[1:]
+		newStructValue.FieldByName(fname).Set(fval)
+	}
+	return newStructValue.Interface(), nil
+}
