@@ -190,8 +190,10 @@ type ChannelGrouping struct {
 }
 
 func (s *ChannelGrouping) MarshalJSON() ([]byte, error) {
-	type NoMethod ChannelGrouping
-	raw := NoMethod(*s)
+	raw, err := googleapi.MakeAllUnexportedFieldsExported(s)
+	if err != nil {
+		return nil, err
+	}
 	return gensupport.MarshalJSON(raw, s.ForceSendFields, s.NullFields)
 }
 
@@ -257,8 +259,10 @@ type DataRange struct {
 }
 
 func (s *DataRange) MarshalJSON() ([]byte, error) {
-	type NoMethod DataRange
-	raw := NoMethod(*s)
+	raw, err := googleapi.MakeAllUnexportedFieldsExported(s)
+	if err != nil {
+		return nil, err
+	}
 	return gensupport.MarshalJSON(raw, s.ForceSendFields, s.NullFields)
 }
 
@@ -304,8 +308,10 @@ type Date struct {
 }
 
 func (s *Date) MarshalJSON() ([]byte, error) {
-	type NoMethod Date
-	raw := NoMethod(*s)
+	raw, err := googleapi.MakeAllUnexportedFieldsExported(s)
+	if err != nil {
+		return nil, err
+	}
 	return gensupport.MarshalJSON(raw, s.ForceSendFields, s.NullFields)
 }
 
@@ -334,8 +340,10 @@ type DisjunctiveMatchStatement struct {
 }
 
 func (s *DisjunctiveMatchStatement) MarshalJSON() ([]byte, error) {
-	type NoMethod DisjunctiveMatchStatement
-	raw := NoMethod(*s)
+	raw, err := googleapi.MakeAllUnexportedFieldsExported(s)
+	if err != nil {
+		return nil, err
+	}
 	return gensupport.MarshalJSON(raw, s.ForceSendFields, s.NullFields)
 }
 
@@ -364,8 +372,10 @@ type EventFilter struct {
 }
 
 func (s *EventFilter) MarshalJSON() ([]byte, error) {
-	type NoMethod EventFilter
-	raw := NoMethod(*s)
+	raw, err := googleapi.MakeAllUnexportedFieldsExported(s)
+	if err != nil {
+		return nil, err
+	}
 	return gensupport.MarshalJSON(raw, s.ForceSendFields, s.NullFields)
 }
 
@@ -395,8 +405,10 @@ type FilterPair struct {
 }
 
 func (s *FilterPair) MarshalJSON() ([]byte, error) {
-	type NoMethod FilterPair
-	raw := NoMethod(*s)
+	raw, err := googleapi.MakeAllUnexportedFieldsExported(s)
+	if err != nil {
+		return nil, err
+	}
 	return gensupport.MarshalJSON(raw, s.ForceSendFields, s.NullFields)
 }
 
@@ -431,8 +443,10 @@ type ListQueriesResponse struct {
 }
 
 func (s *ListQueriesResponse) MarshalJSON() ([]byte, error) {
-	type NoMethod ListQueriesResponse
-	raw := NoMethod(*s)
+	raw, err := googleapi.MakeAllUnexportedFieldsExported(s)
+	if err != nil {
+		return nil, err
+	}
 	return gensupport.MarshalJSON(raw, s.ForceSendFields, s.NullFields)
 }
 
@@ -467,8 +481,10 @@ type ListReportsResponse struct {
 }
 
 func (s *ListReportsResponse) MarshalJSON() ([]byte, error) {
-	type NoMethod ListReportsResponse
-	raw := NoMethod(*s)
+	raw, err := googleapi.MakeAllUnexportedFieldsExported(s)
+	if err != nil {
+		return nil, err
+	}
 	return gensupport.MarshalJSON(raw, s.ForceSendFields, s.NullFields)
 }
 
@@ -503,8 +519,10 @@ type Options struct {
 }
 
 func (s *Options) MarshalJSON() ([]byte, error) {
-	type NoMethod Options
-	raw := NoMethod(*s)
+	raw, err := googleapi.MakeAllUnexportedFieldsExported(s)
+	if err != nil {
+		return nil, err
+	}
 	return gensupport.MarshalJSON(raw, s.ForceSendFields, s.NullFields)
 }
 
@@ -560,8 +578,10 @@ type Parameters struct {
 }
 
 func (s *Parameters) MarshalJSON() ([]byte, error) {
-	type NoMethod Parameters
-	raw := NoMethod(*s)
+	raw, err := googleapi.MakeAllUnexportedFieldsExported(s)
+	if err != nil {
+		return nil, err
+	}
 	return gensupport.MarshalJSON(raw, s.ForceSendFields, s.NullFields)
 }
 
@@ -604,8 +624,10 @@ type PathFilter struct {
 }
 
 func (s *PathFilter) MarshalJSON() ([]byte, error) {
-	type NoMethod PathFilter
-	raw := NoMethod(*s)
+	raw, err := googleapi.MakeAllUnexportedFieldsExported(s)
+	if err != nil {
+		return nil, err
+	}
 	return gensupport.MarshalJSON(raw, s.ForceSendFields, s.NullFields)
 }
 
@@ -637,8 +659,10 @@ type PathQueryOptions struct {
 }
 
 func (s *PathQueryOptions) MarshalJSON() ([]byte, error) {
-	type NoMethod PathQueryOptions
-	raw := NoMethod(*s)
+	raw, err := googleapi.MakeAllUnexportedFieldsExported(s)
+	if err != nil {
+		return nil, err
+	}
 	return gensupport.MarshalJSON(raw, s.ForceSendFields, s.NullFields)
 }
 
@@ -680,8 +704,10 @@ type PathQueryOptionsFilter struct {
 }
 
 func (s *PathQueryOptionsFilter) MarshalJSON() ([]byte, error) {
-	type NoMethod PathQueryOptionsFilter
-	raw := NoMethod(*s)
+	raw, err := googleapi.MakeAllUnexportedFieldsExported(s)
+	if err != nil {
+		return nil, err
+	}
 	return gensupport.MarshalJSON(raw, s.ForceSendFields, s.NullFields)
 }
 
@@ -693,8 +719,8 @@ type Query struct {
 	// Params: Query parameters.
 	Params *Parameters `json:"params,omitempty"`
 
-	// QueryId: Output only. Query ID.
-	QueryId int64 `json:"queryId,omitempty,string"`
+	// queryId: Output only. Query ID.
+	queryId int64 `json:"queryId,omitempty,string"`
 
 	// Schedule: Information on how often and when to run a query. If
 	// `ONE_TIME` is set to the frequency field, the query will only be run
@@ -723,8 +749,10 @@ type Query struct {
 }
 
 func (s *Query) MarshalJSON() ([]byte, error) {
-	type NoMethod Query
-	raw := NoMethod(*s)
+	raw, err := googleapi.MakeAllUnexportedFieldsExported(s)
+	if err != nil {
+		return nil, err
+	}
 	return gensupport.MarshalJSON(raw, s.ForceSendFields, s.NullFields)
 }
 
@@ -774,8 +802,10 @@ type QueryMetadata struct {
 }
 
 func (s *QueryMetadata) MarshalJSON() ([]byte, error) {
-	type NoMethod QueryMetadata
-	raw := NoMethod(*s)
+	raw, err := googleapi.MakeAllUnexportedFieldsExported(s)
+	if err != nil {
+		return nil, err
+	}
 	return gensupport.MarshalJSON(raw, s.ForceSendFields, s.NullFields)
 }
 
@@ -825,8 +855,10 @@ type QuerySchedule struct {
 }
 
 func (s *QuerySchedule) MarshalJSON() ([]byte, error) {
-	type NoMethod QuerySchedule
-	raw := NoMethod(*s)
+	raw, err := googleapi.MakeAllUnexportedFieldsExported(s)
+	if err != nil {
+		return nil, err
+	}
 	return gensupport.MarshalJSON(raw, s.ForceSendFields, s.NullFields)
 }
 
@@ -863,20 +895,22 @@ type Report struct {
 }
 
 func (s *Report) MarshalJSON() ([]byte, error) {
-	type NoMethod Report
-	raw := NoMethod(*s)
+	raw, err := googleapi.MakeAllUnexportedFieldsExported(s)
+	if err != nil {
+		return nil, err
+	}
 	return gensupport.MarshalJSON(raw, s.ForceSendFields, s.NullFields)
 }
 
 // ReportKey: Key used to identify a report.
 type ReportKey struct {
-	// QueryId: Output only. Query ID.
-	QueryId int64 `json:"queryId,omitempty,string"`
+	// queryId: Output only. Query ID.
+	queryId int64 `json:"queryId,omitempty,string"`
 
-	// ReportId: Output only. Report ID.
-	ReportId int64 `json:"reportId,omitempty,string"`
+	// reportId: Output only. Report ID.
+	reportId int64 `json:"reportId,omitempty,string"`
 
-	// ForceSendFields is a list of field names (e.g. "QueryId") to
+	// ForceSendFields is a list of field names (e.g. "queryId") to
 	// unconditionally include in API requests. By default, fields with
 	// empty or default values are omitted from API requests. However, any
 	// non-pointer, non-interface field appearing in ForceSendFields will be
@@ -884,7 +918,7 @@ type ReportKey struct {
 	// This may be used to include empty fields in Patch requests.
 	ForceSendFields []string `json:"-"`
 
-	// NullFields is a list of field names (e.g. "QueryId") to include in
+	// NullFields is a list of field names (e.g. "queryId") to include in
 	// API requests with the JSON null value. By default, fields with empty
 	// values are omitted from API requests. However, any field with an
 	// empty value appearing in NullFields will be sent to the server as
@@ -894,16 +928,18 @@ type ReportKey struct {
 }
 
 func (s *ReportKey) MarshalJSON() ([]byte, error) {
-	type NoMethod ReportKey
-	raw := NoMethod(*s)
+	raw, err := googleapi.MakeAllUnexportedFieldsExported(s)
+	if err != nil {
+		return nil, err
+	}
 	return gensupport.MarshalJSON(raw, s.ForceSendFields, s.NullFields)
 }
 
 // ReportMetadata: Report metadata.
 type ReportMetadata struct {
-	// GoogleCloudStoragePath: Output only. The path to the location in
+	// googleCloudStoragePath: Output only. The path to the location in
 	// Google Cloud Storage where the report is stored.
-	GoogleCloudStoragePath string `json:"googleCloudStoragePath,omitempty"`
+	googleCloudStoragePath string `json:"googleCloudStoragePath,omitempty"`
 
 	// ReportDataEndDate: The ending time for the data that is shown in the
 	// report.
@@ -917,7 +953,7 @@ type ReportMetadata struct {
 	Status *ReportStatus `json:"status,omitempty"`
 
 	// ForceSendFields is a list of field names (e.g.
-	// "GoogleCloudStoragePath") to unconditionally include in API requests.
+	// "googleCloudStoragePath") to unconditionally include in API requests.
 	// By default, fields with empty or default values are omitted from API
 	// requests. However, any non-pointer, non-interface field appearing in
 	// ForceSendFields will be sent to the server regardless of whether the
@@ -925,7 +961,7 @@ type ReportMetadata struct {
 	// Patch requests.
 	ForceSendFields []string `json:"-"`
 
-	// NullFields is a list of field names (e.g. "GoogleCloudStoragePath")
+	// NullFields is a list of field names (e.g. "googleCloudStoragePath")
 	// to include in API requests with the JSON null value. By default,
 	// fields with empty values are omitted from API requests. However, any
 	// field with an empty value appearing in NullFields will be sent to the
@@ -936,16 +972,18 @@ type ReportMetadata struct {
 }
 
 func (s *ReportMetadata) MarshalJSON() ([]byte, error) {
-	type NoMethod ReportMetadata
-	raw := NoMethod(*s)
+	raw, err := googleapi.MakeAllUnexportedFieldsExported(s)
+	if err != nil {
+		return nil, err
+	}
 	return gensupport.MarshalJSON(raw, s.ForceSendFields, s.NullFields)
 }
 
 // ReportStatus: Report status.
 type ReportStatus struct {
-	// FinishTime: Output only. The time when this report either completed
+	// finishTime: Output only. The time when this report either completed
 	// successfully or failed.
-	FinishTime string `json:"finishTime,omitempty"`
+	finishTime string `json:"finishTime,omitempty"`
 
 	// Format: The file type of the report.
 	//
@@ -956,7 +994,7 @@ type ReportStatus struct {
 	//   "XLSX" - Excel.
 	Format string `json:"format,omitempty"`
 
-	// State: Output only. The state of the report.
+	// state: Output only. The state of the report.
 	//
 	// Possible values:
 	//   "STATE_UNSPECIFIED" - Default value when state is not specified or
@@ -965,9 +1003,9 @@ type ReportStatus struct {
 	//   "RUNNING" - The report is currently running.
 	//   "DONE" - The report has finished running successfully.
 	//   "FAILED" - The report has finished running in failure.
-	State string `json:"state,omitempty"`
+	state string `json:"state,omitempty"`
 
-	// ForceSendFields is a list of field names (e.g. "FinishTime") to
+	// ForceSendFields is a list of field names (e.g. "finishTime") to
 	// unconditionally include in API requests. By default, fields with
 	// empty or default values are omitted from API requests. However, any
 	// non-pointer, non-interface field appearing in ForceSendFields will be
@@ -975,7 +1013,7 @@ type ReportStatus struct {
 	// This may be used to include empty fields in Patch requests.
 	ForceSendFields []string `json:"-"`
 
-	// NullFields is a list of field names (e.g. "FinishTime") to include in
+	// NullFields is a list of field names (e.g. "finishTime") to include in
 	// API requests with the JSON null value. By default, fields with empty
 	// values are omitted from API requests. However, any field with an
 	// empty value appearing in NullFields will be sent to the server as
@@ -985,8 +1023,10 @@ type ReportStatus struct {
 }
 
 func (s *ReportStatus) MarshalJSON() ([]byte, error) {
-	type NoMethod ReportStatus
-	raw := NoMethod(*s)
+	raw, err := googleapi.MakeAllUnexportedFieldsExported(s)
+	if err != nil {
+		return nil, err
+	}
 	return gensupport.MarshalJSON(raw, s.ForceSendFields, s.NullFields)
 }
 
@@ -1023,8 +1063,10 @@ type Rule struct {
 }
 
 func (s *Rule) MarshalJSON() ([]byte, error) {
-	type NoMethod Rule
-	raw := NoMethod(*s)
+	raw, err := googleapi.MakeAllUnexportedFieldsExported(s)
+	if err != nil {
+		return nil, err
+	}
 	return gensupport.MarshalJSON(raw, s.ForceSendFields, s.NullFields)
 }
 
@@ -1052,8 +1094,10 @@ type RunQueryRequest struct {
 }
 
 func (s *RunQueryRequest) MarshalJSON() ([]byte, error) {
-	type NoMethod RunQueryRequest
-	raw := NoMethod(*s)
+	raw, err := googleapi.MakeAllUnexportedFieldsExported(s)
+	if err != nil {
+		return nil, err
+	}
 	return gensupport.MarshalJSON(raw, s.ForceSendFields, s.NullFields)
 }
 
